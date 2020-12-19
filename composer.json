@@ -10,5 +10,14 @@
             "role": "Developer"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "files": [
+        ],
+        "classmap": [
+        ],
+        "psr-4": {
+            "Akhaled\\HybridComponents\\": ["src"]
+        }
+    }
 }

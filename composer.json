@@ -28,5 +28,13 @@
                 "src"
             ]
         }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/TestCase.php"
+        ]
+    },
+    "scripts": {
+        "test": "phpunit"
     }
 }

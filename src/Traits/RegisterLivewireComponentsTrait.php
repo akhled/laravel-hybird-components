@@ -12,6 +12,6 @@ trait RegisterLivewireComponentsTrait
 {
     public function bootLivewireComponentsUp()
     {
-        // Livewire::component('hybrid-modal', Modal::class);
+        Livewire::component('hybrid-modal', Modal::class);
     }
 }

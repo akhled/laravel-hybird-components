@@ -3,9 +3,14 @@
 namespace Akhaled\HybridComponents;
 
 use Illuminate\Support\ServiceProvider;
+use Akhaled\HybridComponents\Traits\RegisterComponentsTrait;
 
 class HybridComponentsServiceProvider extends ServiceProvider
 {
+    use RegisterComponentsTrait;
+
+    const HYBRID_COMPONENTS_DIR = __DIR__ . '/../resources/views/components';
+
     /**
      * Register services.
      *
@@ -23,6 +28,7 @@ class HybridComponentsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'hybrid-components');
+        $this->bootComponentsUp();
     }
 }

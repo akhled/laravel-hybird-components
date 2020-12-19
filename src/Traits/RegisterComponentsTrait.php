@@ -2,7 +2,7 @@
 
 namespace Akhaled\HybridComponents\Traits;
 
-use Illuminate\View\Compilers\BladeCompiler;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Blade;
 
 /**
@@ -10,16 +10,30 @@ use Illuminate\Support\Facades\Blade;
  */
 trait RegisterComponentsTrait
 {
-    /**
-     * Configure CMS Blade components.
-     *
-     * @return void
-     */
     protected function bootComponentsUp()
     {
-        $this->callAfterResolving(BladeCompiler::class, function () {
-            $this->registerComponentDirectory('button');
-        });
+        // $this->callAfterResolving(BladeCompiler::class, function () {
+        $component_list = $this->scanComponentsDir();
+        $this->registerComponentDirectory($component_list);
+        // });
+    }
+
+    public function scanComponentsDir(string $scan_dir = self::HYBRID_COMPONENTS_DIR)
+    {
+        $scanned = collect(scandir($scan_dir));
+        $scanned->forget([0, 1]); // remove . & ..
+        $files = collect();
+
+        foreach ($scanned as $file) {
+            $file_path = implode('/', [$scan_dir, $file]);
+            $files->add(
+                is_dir($file_path) ? $this->scanComponentsDir($file_path) : $file_path
+            );
+        }
+
+        if (isset($only)) $files = filter_files_by_extension($files, 'php');
+
+        return $files;
     }
 
     /**
@@ -29,32 +43,28 @@ trait RegisterComponentsTrait
      * @param string $alias the suffix will append before component blade, ex: offer-blade
      * @return void
      */
-    private function registerComponentDirectory(string $dir_name, string $alias = null)
+    private function registerComponentDirectory(Collection $components_dir): void
     {
-        $actual_component_suffix = $this->getActualComponentSuffix($dir_name);
-        $alias_component_alias = $this->getAliasComponentSuffix($alias ?? $dir_name);
-
-        get_dir_files_list(self::HYBRID_COMPONENTS_DIR . '/' . $dir_name, 'php', false)
-            ->each(function ($file_name) use ($actual_component_suffix, $alias_component_alias) {
-                $component_name = str_replace('.blade', '', pathinfo($file_name, PATHINFO_FILENAME));
-                $actual_component = implode('.', [$actual_component_suffix, $component_name]);
-                $alias_component = implode('-', [$alias_component_alias, $component_name]);
-                $this->registerComponent($actual_component, $alias_component);
-            });
+        $components_dir->each(function ($component) {
+            ($component instanceof Collection)
+                ? $this->registerComponentDirectory($component)
+                : $this->registerComponent($component);
+        });
     }
 
-    private function getActualComponentSuffix($path)
+    private function getActualComponentSuffix(string $path): string
     {
-        return 'hybrid-components::components.' . str_replace(['resources/views/', '/'], ['', '.'], $path);
+        return 'hybrid-components::components' . str_replace([self::HYBRID_COMPONENTS_DIR, '/'], ['', '.'], $path);
     }
 
-    private function getAliasComponentSuffix($alias)
+    private function getAliasComponentSuffix(string $alias): string
     {
-        return 'hybrid-' . str_replace(['resources/views/components/', '/'], ['', '-'], $alias);
+        return 'hybrid' . str_replace([self::HYBRID_COMPONENTS_DIR, '/'], ['', '-'], $alias);
     }
 
-    private function registerComponent(string $actual, string $alias)
+    private function registerComponent(string $component): void
     {
-        Blade::component($actual, $alias);
+        $component = str_replace('.blade.php', '', $component);
+        Blade::component($this->getActualComponentSuffix($component), $this->getAliasComponentSuffix($component));
     }
 }

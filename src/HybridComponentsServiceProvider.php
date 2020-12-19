@@ -18,7 +18,6 @@ class HybridComponentsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
     }
 
     /**

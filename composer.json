@@ -1,24 +1,28 @@
 {
-    "name": "akhaled/laravel-hybrid-components",
-    "description": "Use Laravel components built with tailwind and alpinejs",
-    "type": "Library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Amro Khaled",
-            "email": "hi@amrography.com",
-            "role": "Developer"
-        }
-    ],
-    "require": {},
-    "autoload": {
-        "files": [
-            "src/helpers.php"
-        ],
-        "classmap": [
-        ],
-        "psr-4": {
-            "Akhaled\\HybridComponents\\": ["src"]
-        }
-    }
+	"name": "akhaled/laravel-hybrid-components",
+	"description": "Use Laravel components built with Tailwind and Livewire",
+	"type": "library",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Amro Khaled",
+			"email": "hi@amrography.com",
+			"role": "Developer"
+		}
+	],
+	"require": {
+        "php": ">=7.4",
+		"illuminate/support": ">=8.0.0",
+		"illuminate/view": ">=8.0.0"
+	},
+	"autoload": {
+		"files": [
+			"src/helpers.php"
+		],
+		"psr-4": {
+			"Akhaled\\HybridComponents\\": [
+				"src"
+			]
+		}
+	}
 }

@@ -1,0 +1,14 @@
+{
+    "name": "akhaled/laravel-hybrid-components",
+    "description": "Use Laravel components built with tailwind and alpinejs",
+    "type": "Library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Amro Khaled",
+            "email": "hi@amrography.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {}
+}

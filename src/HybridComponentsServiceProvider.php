@@ -4,10 +4,11 @@ namespace Akhaled\HybridComponents;
 
 use Illuminate\Support\ServiceProvider;
 use Akhaled\HybridComponents\Traits\RegisterComponentsTrait;
+use Akhaled\HybridComponents\Traits\RegisterLivewireComponentsTrait;
 
 class HybridComponentsServiceProvider extends ServiceProvider
 {
-    use RegisterComponentsTrait;
+    use RegisterComponentsTrait, RegisterLivewireComponentsTrait;
 
     const HYBRID_COMPONENTS_DIR = __DIR__ . '/../resources/views/components';
 
@@ -29,5 +30,6 @@ class HybridComponentsServiceProvider extends ServiceProvider
     {
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'hybrid-components');
         $this->bootComponentsUp();
+        $this->bootLivewireComponentsUp();
     }
 }

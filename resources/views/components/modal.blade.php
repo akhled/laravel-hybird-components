@@ -59,7 +59,7 @@
                 </h3>
 
                 @if ($times)
-                    <x-hybrid-button-modal-times />
+                    <x-hybrid-button-modal-times modal-color="{{ $bgColor }}"/>
                 @endif
             </div>
 

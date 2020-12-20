@@ -1,8 +1,6 @@
 <?php
 
-use Livewire\Livewire;
 use Akhaled\HybridComponents\Tests\TestCase;
-use Akhaled\HybridComponents\Livewire\Modal;
 
 /**
  * ModalsTest
@@ -14,7 +12,7 @@ class ModalsTest extends TestCase
     /** @test */
     public function modal_is_available()
     {
-        Livewire::test('hybrid-modal')->assertStatus(200);
-        Livewire::test(Modal::class)->assertStatus(200);
+        $this->assertComponentExist('hybrid-components::components.modal');
+        $this->assertComponentAliasExist('hybrid-modal');
     }
 }

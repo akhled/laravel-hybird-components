@@ -1,8 +1,6 @@
-@props([
-'modal'
-])
-
-<x-hybrid-button-danger wire:click="$toggle('{{ $modal }}')"
-    wire:loading.attr="disabled">
+<x-hybrid-button {{ $attributes->merge([
+    'x-on:click' => 'showModal = true',
+    'wire:loading.attr' => 'disabled',
+]) }}>
     {{ $slot }}
-</x-hybrid-button-danger>
+</x-hybrid-button>

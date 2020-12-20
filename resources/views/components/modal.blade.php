@@ -1,5 +1,6 @@
 @props([
 'maxWidth' => null,
+'times' => true
 ])
 
 {{--
@@ -63,35 +64,21 @@ break;
             x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
             x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
 
-            {{--Title--}}
-            <div class="flex justify-between items-center pb-3">
-                <p class="text-2xl font-bold">Simple Modal!</p>
-                <div class="cursor-pointer z-50"
-                    x-on:click="showModal = false">
-                    <svg class="fill-current text-black"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="18"
-                        height="18"
-                        viewBox="0 0 18 18">
-                        <path
-                            d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
-                        </path>
-                    </svg>
-                </div>
+            <div class="flex justify-between items-center pt-5 px-4">
+                <h3 class="text-lg">
+                    {{ $title }}
+                </h3>
+                @if ($time)
+                    <x-hybrid-button-modal-times />
+                @endif
             </div>
 
-            {{-- content --}}
-            <div>
+            <div class="bg-white px-4 py-4 sm:p-6 sm:pb-4 mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                 {{ $content }}
             </div>
 
-            {{--Footer--}}
-            <div class="flex justify-end pt-2">
-                <button
-                    class="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2"
-                    x-on:click="alert('Additional Action');">Action</button>
-                <button class="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400"
-                    x-on:click="showModal = false">Close</button>
+            <div class="px-6 py-4 bg-gray-100 text-right">
+                {{ $footer }}
             </div>
 
         </div>

@@ -1,12 +1,11 @@
-@props([
-'color',
-'text' => null,
-'bgTint'=> 600,
-'hoverBgTint'=>null,
-'focusBorderTint'=>null,
-])
-
 @php
+$color = $attributes->get('color');
+$text = $attributes->get('text');
+$bgTint = $attributes->get('bg-tint');
+$hoverBgTint = $attributes->get('hover-bg-tint');
+$focusBorderTint = $attributes->get('focus-border-tint');
+
+$bgTint = $bgTint ?? 400;
 $text = $text ?? ($bgTint > 400 ? 'white' : 'black');
 
 $hoverBgTint = $hoverBgTint ?? $bgTint - 100;

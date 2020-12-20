@@ -10,10 +10,10 @@ use Akhaled\HybridComponents\Tests\TestCase;
 class ButtonsTest extends TestCase
 {
     /** @test */
-    public function button_danger_is_available()
+    public function button_is_available()
     {
-        $this->assertComponentExist('hybrid-components::components.button.danger');
-        $this->assertComponentAliasExist('hybrid-button-danger');
+        $this->assertComponentExist('hybrid-components::components.button');
+        $this->assertComponentAliasExist('hybrid-button');
     }
 
     /** @test */
@@ -21,5 +21,12 @@ class ButtonsTest extends TestCase
     {
         $this->assertComponentExist('hybrid-components::components.button.modal.show');
         $this->assertComponentAliasExist('hybrid-button-modal-show');
+    }
+
+    /** @test */
+    public function button_modal_times_is_available()
+    {
+        $this->assertComponentExist('hybrid-components::components.button.modal.times');
+        $this->assertComponentAliasExist('hybrid-button-modal-times');
     }
 }

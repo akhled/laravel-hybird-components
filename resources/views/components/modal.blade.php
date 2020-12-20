@@ -1,5 +1,6 @@
 @props([
-'maxWidth' => null,
+'size' => '3xl',
+'bgColor' => 'white',
 'times' => true,
 'openOnInit' => false,
 'cancel' => false,
@@ -12,27 +13,6 @@
 @todo What to do with confirm button ?
 @todo Transition usage
 --}}
-
-@php
-switch ($maxWidth ?? '2xl') {
-case 'sm':
-$maxWidth = 'sm:max-w-sm';
-break;
-case 'md':
-$maxWidth = 'sm:max-w-md';
-break;
-case 'lg':
-$maxWidth = 'sm:max-w-lg';
-break;
-case 'xl':
-$maxWidth = 'sm:max-w-xl';
-break;
-case '2xl':
-default:
-$maxWidth = 'sm:max-w-2xl';
-break;
-}
-@endphp
 
 <div x-data="{
     showModal: {{ $openOnInit ? 'true' : 'false' }}
@@ -61,7 +41,7 @@ break;
         </div>
 
         <div x-show="showModal"
-            class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full {{ $maxWidth }}"
+            class="bg-{{ $bgColor }} rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full sm:max-w-{{ $size }}"
             {{--
             x-transition:enter="ease-out duration-300"
             x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
@@ -72,11 +52,11 @@ break;
             --}}>
 
             <div class="flex justify-between items-center pt-5 px-4">
-                @isset($title)
-                    <h3 class="text-lg">
+                <h3 class="text-lg">
+                    @isset($title)
                         {{ $title }}
-                    </h3>
-                @endisset
+                    @endisset
+                </h3>
 
                 @if ($times)
                     <x-hybrid-button-modal-times />
@@ -84,7 +64,7 @@ break;
             </div>
 
             @isset($content)
-                <div class="bg-white px-4 py-4 sm:p-6 sm:pb-4 mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                <div class="px-4 py-4 sm:p-6 sm:pb-4 mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                     {{ $content }}
                 </div>
             @endisset
@@ -96,11 +76,11 @@ break;
                     @endisset
 
                     @if ($confirm)
-                        <x-hybrid-button color="blue">Confirm</x-hybrid-button>
+                        <x-hybrid-button bg-color="blue">Confirm</x-hybrid-button>
                     @endif
 
                     @if ($cancel)
-                        <x-hybrid-button color="red"
+                        <x-hybrid-button bg-color="red"
                             x-on:click="showModal = false">Cancel</x-hybrid-button>
                     @endif
                 </div>

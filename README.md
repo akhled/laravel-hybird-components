@@ -6,27 +6,29 @@ Laravel components build with Tailwind, AlpineJS and Livewire
 
 ## Buttons
 
-### Danger
+### Base button
 
 ```php
-<x-hybrid-button-danger>
+<x-hybrid-button>
     Delete
-</x-hybrid-button-danger>
+</x-hybrid-button>
 ```
 
 ## Modal
 
-### Main
+### Base modal
 
 ```php
-<x-hybrid-modal id="testModal">
-    <x-hybrid-button-modal-show color="green-600">
-    </x-hybrid-button-modal-show>
+<x-hybrid-modal>
+    <x-hybrid-button color="green">
+        Open modal
+    </x-hybrid-button>
 
     <x-slot name="title">
     </x-slot>
 
     <x-slot name="content">
+        Hi
     </x-slot>
 
     <x-slot name="footer">

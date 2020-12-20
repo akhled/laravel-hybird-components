@@ -77,7 +77,7 @@ break;
                         {{ $title }}
                     </h3>
                 @endisset
-                @endif
+
                 @if ($times)
                     <x-hybrid-button-modal-times />
                 @endif

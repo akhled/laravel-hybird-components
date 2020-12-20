@@ -1,13 +1,15 @@
 @props([
 'maxWidth' => null,
-'times' => true
+'times' => true,
+'openOnInit' => false,
+'cancel' => false,
+'confirm' => false,
 ])
 
 {{--
-@todo Confirm action button
-@todo Cancel action button
-@todo Times close button
-@todo Default open modal
+@todo Confirm color and text button
+@todo Cancel color and text button
+@todo What to do with confirm button ?
 --}}
 
 @php
@@ -32,7 +34,7 @@ break;
 @endphp
 
 <div x-data="{
-    showModal: false
+    showModal: {{ $openOnInit }}
 }">
 
     {{ $slot }}
@@ -68,7 +70,7 @@ break;
                 <h3 class="text-lg">
                     {{ $title }}
                 </h3>
-                @if ($time)
+                @if ($times)
                     <x-hybrid-button-modal-times />
                 @endif
             </div>
@@ -77,9 +79,19 @@ break;
                 {{ $content }}
             </div>
 
-            <div class="px-6 py-4 bg-gray-100 text-right">
-                {{ $footer }}
-            </div>
+            @if ($footer || $cancel || $confirm)
+                <div class="px-6 py-4 bg-gray-100 text-right">
+                    {{ $footer }}
+
+                    @if ($cancel)
+                        <x-hybrid-button color="red" x-on:click="showModal = false">Cancel</x-hybrid-button>
+                    @endif
+
+                    @if ($confirm)
+                        <x-hybrid-button color="blue">Confirm</x-hybrid-button>
+                    @endif
+                </div>
+            @endif
 
         </div>
     </div>

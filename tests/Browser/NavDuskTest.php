@@ -14,8 +14,8 @@ class NavDuskTest extends TestCase
         $this->browse(fn ($browser) => $browser->visit(new Base));
     }
 
-    /** @!test */
-    public function check_nav_dismissible_classes()
+    /** @test */
+    public function check_nav_dismissible()
     {
         $this->browse(fn ($browser) => $browser->visit(new Dismissible));
     }

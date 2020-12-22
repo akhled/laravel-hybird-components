@@ -11,12 +11,15 @@ class Base extends Page
 
     public function elements()
     {
+        $base_selector = 'nav.w-full';
+        $fixed_base_selector = $base_selector . ".bg-white.text-black.fixed";
+
         return [
-            '@nav-base' => '.test-nav-base > nav.w-full.bg-white.text-black',
-            '@nav-colors' => '.test-nav-colors > nav.w-full.text-white.bg-gray-900',
-            '@nav-fixed' => '.test-nav-fixed > nav.bg-white.text-black.fixed.left-0.right-0',
-            '@nav-fixed-top-0' => '.test-nav-fixed-top-0 > nav.bg-white.text-black.fixed.left-0.right-0.top-0',
-            '@nav-fixed-bottom' => '.test-nav-fixed-bottom > nav.bg-white.text-black.fixed.bottom-0.left-0.right-0',
+            '@nav-base' => ".test-nav-base > ${base_selector}.bg-white.text-black",
+            '@nav-colors' => ".test-nav-colors > ${base_selector}.text-white.bg-gray-900",
+            '@nav-fixed' => ".test-nav-fixed > ${fixed_base_selector}.left-0.right-0",
+            '@nav-fixed-top-0' => ".test-nav-fixed-top-0 > ${fixed_base_selector}.left-0.right-0.top-0",
+            '@nav-fixed-bottom' => ".test-nav-fixed-bottom > ${fixed_base_selector}.bottom-0.left-0.right-0",
         ];
     }
 

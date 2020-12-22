@@ -2,8 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-// Buttons
-Route::view('/button/base', 'test-view::button.base');
+Route::view('/button', 'test-view::button');
 
 // Modals
 Route::view('/modal/default', 'test-view::modal.default');

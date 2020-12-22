@@ -1,3 +1,7 @@
+@props([
+    'onDismiss' => null
+])
+
 @php
 $class = "flex align-center justify-between";
 $bgColor = $attributes->get('bg-color', 'white');
@@ -26,6 +30,5 @@ if ($animate && $animate == true) {
     <div>
         {{ $slot }}
     </div>
-    <x-hybrid-button-times text-color="{{ $textColor }}"
-        x-on:click="dismiss=true" />
+    <x-hybrid-button-times text-color="{{ $textColor }}" x-on:click="dismiss = true;{{ $onDismiss ? '$dispatch(\''.$onDismiss.'\')' : ''}};" />
 </x-hybrid-nav>

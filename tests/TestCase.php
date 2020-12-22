@@ -2,18 +2,19 @@
 
 namespace Akhaled\HybridComponents\Tests;
 
-use Orchestra\Testbench\TestCase as TestbenchTestCase;
+use Orchestra\Testbench\Dusk\TestCase as DuskTestCase;
 use Livewire\LivewireServiceProvider;
 use Akhaled\HybridComponents\Tests\Traits\AssertionsTrait;
 use Akhaled\HybridComponents\HybridComponentsServiceProvider;
 
-abstract class TestCase extends TestbenchTestCase
+abstract class TestCase extends DuskTestCase
 {
     use AssertionsTrait;
 
     protected function getPackageProviders($app)
     {
         return [
+            RouteServiceProvider::class,
             HybridComponentsServiceProvider::class,
             LivewireServiceProvider::class,
         ];
@@ -27,5 +28,11 @@ abstract class TestCase extends TestbenchTestCase
     public function setUp(): void
     {
         parent::setUp();
+    }
+
+    protected function getBasePath()
+    {
+        // Adjust this path depending on where your override is located.
+        return __DIR__ . '/../vendor/orchestra/testbench-dusk/laravel';
     }
 }

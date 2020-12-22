@@ -1,5 +1,7 @@
 <?php
 
+namespace Akhaled\HybridComponents\Tests\Unit;
+
 use Akhaled\HybridComponents\Tests\TestCase;
 
 /**

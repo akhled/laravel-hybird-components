@@ -3,17 +3,15 @@
 namespace Akhaled\HybridComponents\Tests\Browser;
 
 use Akhaled\HybridComponents\Tests\TestCase;
+use Akhaled\HybridComponents\Tests\Pages\Modal\DefaultModal;
 
 class ModalsDuskTest extends TestCase
 {
     /** @test */
-    public function modal_is_available()
+    public function test_modal_with_default()
     {
         $this->browse(function ($browser) {
-            $browser
-                ->visit('/modal')
-                // ->screenshot('modal')
-                ->assertPresent('.modal');
+            $browser->visit(new DefaultModal);
         });
     }
 }

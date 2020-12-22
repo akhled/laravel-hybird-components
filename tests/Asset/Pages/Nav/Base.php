@@ -12,7 +12,8 @@ class Base extends Page
     public function elements()
     {
         return [
-            '@nav-base' => '.test-nav-base > nav.bg-white.text-black',
+            '@nav-base' => '.test-nav-base > nav.w-full.bg-white.text-black',
+            '@nav-colors' => '.test-nav-colors > nav.w-full.text-white.bg-gray-900',
             '@nav-fixed' => '.test-nav-fixed > nav.bg-white.text-black.fixed.left-0.right-0',
             '@nav-fixed-top-0' => '.test-nav-fixed-top-0 > nav.bg-white.text-black.fixed.left-0.right-0.top-0',
             '@nav-fixed-bottom' => '.test-nav-fixed-bottom > nav.bg-white.text-black.fixed.bottom-0.left-0.right-0',
@@ -22,6 +23,7 @@ class Base extends Page
     public function assert(Browser $browser)
     {
         $browser->assertPresent('@nav-base')->assertSee('Base nav');
+        $browser->assertPresent('@nav-colors');
         $browser->assertPresent('@nav-fixed');
         $browser->assertPresent('@nav-fixed-top-0');
         $browser->assertPresent('@nav-fixed-bottom');

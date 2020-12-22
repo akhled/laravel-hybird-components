@@ -1,5 +1,6 @@
 @php
 // bg-color
+// bg-color-tint
 // text-color
 // position => ['fixed', 'fixed-top', 'fixed-bottom', 'absolute', 'absolute-top', 'absolute-bottom', 'relative']
 // top
@@ -9,7 +10,9 @@
 
 $class = "w-full";
 $bgColor = $attributes->get('bg-color', 'white');
-$class .= " bg-${bgColor}";
+$bgColorTint = $attributes->get('bg-color-tint');
+$class .= " bg-${bgColor}" . ($bgColorTint ? "-${bgColorTint}" : "");
+
 $textColor = $attributes->get('text-color', 'black');
 $class .= " text-${textColor}";
 

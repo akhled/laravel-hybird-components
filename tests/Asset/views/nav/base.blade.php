@@ -2,6 +2,10 @@
     <x-hybrid-nav>Base nav</x-hybrid-nav>
 </div>
 
+<div class="test-nav-colors">
+    <x-hybrid-nav bg-color="gray" bg-color-tint="900" text-color="white">Colors nav</x-hybrid-nav>
+</div>
+
 <div class="test-nav-fixed">
     <x-hybrid-nav position="fixed">fixed nav</x-hybrid-nav>
 </div>

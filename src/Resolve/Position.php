@@ -6,7 +6,7 @@ use Illuminate\View\ComponentAttributeBag;
 
 /**
  * Available options
- * ['fixed', 'fixed-top', 'fixed-bottom', 'absolute', 'absolute-top', 'absolute-bottom', 'relative']
+ * ['fixed', 'absolute', 'relative', '*-top', '*-bottom']
  */
 class Position
 {

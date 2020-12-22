@@ -13,5 +13,6 @@ class ModalsDuskTest extends TestCase
         $this->browse(function ($browser) {
             $browser->visit(new DefaultModal);
         });
+        $this->assertTrue(true);
     }
 }

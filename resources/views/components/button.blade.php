@@ -5,6 +5,7 @@ $bgTint = $attributes->get('bg-tint');
 $hoverBgTint = $attributes->get('hover-bg-tint');
 $focusBorderTint = $attributes->get('focus-border-tint');
 
+$bgColor = $bgColor ?? 'gray';
 $bgTint = $bgTint ?? 500;
 $textColor = $textColor ?? ($bgTint >= 500 ? 'white' : 'black');
 

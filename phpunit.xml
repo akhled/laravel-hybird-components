@@ -8,8 +8,11 @@
         stopOnFailure="true"
 >
     <testsuites>
-        <testsuite name="Laravel hybrid component">
-            <directory suffix="Test.php">./tests</directory>
+        <testsuite name="Available Laravel hybrid component">
+            <directory suffix="Test.php">./tests/Available</directory>
+        </testsuite>
+        <testsuite name="UI checks for Laravel hybrid component">
+            <directory suffix="Test.php">./tests/UI</directory>
         </testsuite>
     </testsuites>
 </phpunit>

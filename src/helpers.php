@@ -15,10 +15,8 @@ if (!function_exists('filter_files_by_extension')) {
     {
         if (!is_array($only)) $only = [$only];
 
-        $files->filter(function ($file) use ($only) {
+        return $files->filter(function ($file) use ($only) {
             return in_array(pathinfo($file, PATHINFO_EXTENSION), $only);
         });
-
-        return $files;
     }
 }
